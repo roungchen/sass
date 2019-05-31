@@ -1,0 +1,59 @@
+// =============================================================================
+// Font Face
+// @param {String} $name - name of the font
+// @param {String} $path 
+// @param {String} $weight 
+// @param {String} $style 
+// @param {String} $exts
+// =============================================================================
+@mixin font-face($name, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+	$eot_src: null;
+
+	$extmods: (		
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		@if $ext == 'eot' {
+			$eot_src: append($eot_src, url(quote($font_path + $name + "." + $extmod)) format(quote($format)), comma);
+			$src: append($src, url(quote($font_path + $name + "." + $extmod)) format('embedded-opentype'), comma);
+		} @else {
+			$src: append($src, url(quote($font_path + $name + "." + $extmod)) format(quote($format)), comma);
+		}
+		
+	}
+	@font-face {
+		font:{
+			family: quote($name);
+			style: $style;
+			weight: $weight;
+		}
+		@if $eot_src {
+			src: $eot_src;
+		}
+		src: $src;
+	}
+}
+
+/// Mixin helper to output vendor prefixes
+/// @access public
+/// @author HugoGiraudel
+/// @param {String} $property - Unprefixed CSS property
+/// @param {*} $value - Raw CSS value
+/// @param {List} $prefixes - List of prefixes to output
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
