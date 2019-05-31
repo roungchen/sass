@@ -1,5 +1,6 @@
 // =============================================================================
 // Return color base on the key
+// @param {String} $value - name of the color 
 // @required $primary-colours
 // =============================================================================
 @function getPrimaryColor ($value) {
@@ -8,6 +9,7 @@
 
 // =============================================================================
 // Convert points to pixel
+// @param {Float} $points
 // =============================================================================
 @function pt-to-px ($points) {
 	@return #{floor($points*.625+$points)}px; 
@@ -15,6 +17,9 @@
 
 // =============================================================================
 // String Replace
+// @param {String} $string
+// @param {String} $search
+// @param {String} $replace
 // =============================================================================
 @function str-replace($string, $search, $replace: "") {
 	$index: str-index($string, $search);
@@ -28,6 +33,9 @@
 
 // =============================================================================
 // Convert str to list
+// @param {String} $string
+// @param {String} $separator
+// @param {Int} $startAt 
 // =============================================================================
 @function str-to-list($string, $separator: ' ', $startAt: 1) {
     $workStr: str-slice($string,$startAt);
@@ -44,6 +52,7 @@
 
 // =============================================================================
 // Calculate the percentage base on the width
+// @param {Int} $width 
 // @required $default_width
 // =============================================================================
 @function calWidthPct ($width) {
@@ -52,6 +61,7 @@
 
 // =============================================================================
 // Calculate the percentage base on the height
+// @param {Int} $height 
 // @required $default_height
 // =============================================================================
 @function calHeightPct ($height) {
