@@ -1,0 +1,67 @@
+// =============================================================================
+// Handle landscape orientation
+// =============================================================================
+@mixin landscape {
+	@media screen and (orientation:landscape) {
+		@content;
+	}
+}
+
+// =============================================================================
+// Handle portrait orientation
+// =============================================================================
+@mixin portrait {
+	@media screen and (orientation:portrait) {
+		@content;
+	}
+}
+
+// =============================================================================
+// Primary input mechanism system can hover over elements with ease, which mainly desktop
+// =============================================================================
+@mixin desktop-hover {
+    @media (hover: hover) {
+    	&:hover { 
+	        @content;
+	    }
+    }
+}
+
+// =============================================================================
+// Responsive breakpoint manager
+// @access public
+// @param {String} $breakpoint - Breakpoint
+// @param {String} $include_print
+// @requires $breakpoints
+// =============================================================================
+@mixin respond-to($breakpoint,$include_print:null) {
+	$raw-query: map-get($breakpoints, $breakpoint);
+
+	@if $include_print {
+		$include_print: ',print';
+	}
+	@if $raw-query {
+		$query: if(
+			type-of($raw-query) == 'string',
+			unquote($raw-query),
+			inspect($raw-query)
+		);
+
+		@media #{$query}#{$include_print} {
+	  		@content;
+		}
+	} @else {
+		@error 'No value found for `#{$breakpoint}`. '
+			 + 'Please make sure it is defined in `$breakpoints` map.';
+	}
+}
+
+
+// =============================================================================
+// smartphones, touchscreens
+// =============================================================================
+@mixin touchscreen-device {
+	@media (hover: none) and (pointer: coarse) {
+		@content;
+	}	
+}
