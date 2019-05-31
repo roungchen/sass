@@ -1,0 +1,145 @@
+// =============================================================================
+// Shorthand for font
+// @param {String} $family [null]
+// @param {Length} $size [null] - if no unit provided, it assume to convert pt to px
+// @param {String} $style [null] 
+// @param {String} $weight [null] - sets how thick or thin characters in text
+// @param {String} $color [null]
+// @param {String} $leading [null] - specifies the height of a line
+// @param {String} $align [null] - specifies the horizontal alignment of text in an element
+// @param {String} $transform [null] -  controls the capitalization of text
+// @param {String} $decoration [null] - specifies the decoration added to tex
+// @param {String} $spacing [null] - letter spacing
+// =============================================================================
+@mixin font ($family:null,$size:null,$style:null,$weight:null,$color:null,$leading:null,$align:null,$transform:null,$decoration:null,$spacing:null) {	
+	font:{
+		family: $family;
+		@if $size {
+			@if unitless($size) {
+				size: pt-to-px($size);
+			} @else {
+				size: $size;
+			}
+		}
+		style:$style;
+		weight:$weight;
+	}
+	letter-spacing: $spacing;
+	@if $leading {
+		@if unitless($leading) {
+			line-height: pt-to-px($leading);
+		} @else {
+			line-height:$leading;
+		}
+	}
+	color:$color;
+	text:{
+		align: $align;
+		transform: $transform;
+		decoration: $decoration;
+	}
+}
+
+
+// =============================================================================
+// Shorthand for background
+// @param {String} $color [null]
+// @param {String} $image [null] - a single filename or multi filename separate by space in quote
+// @param {String} $repeat [null] - sets if/how a background image will be repeated
+// @param {String} $attachment [null] - sets whether a background image scrolls with the rest of the page, or is fixed.
+// @param {String} $position [null] - sets the starting position of a background image
+// @param {String} $size [null] - specifies the size of the background images
+// =============================================================================
+@mixin background($color: null,$img: null,$repeat: null,$attachment: null,$position: null,$size: null) {
+	background:{
+		color: $color;
+		repeat: $repeat;
+		size: $size;
+		attachment: $attachment;
+		position: $position;
+	}
+	@if ($img) {
+		$imgs: null;
+		@if $img == 'none' {
+			$imgs: none;
+		} @else if str-index($img,"linear-gradient") { 
+			$img: unquote($img);
+			background-image: -webkit-#{$img};
+			background-image: -moz-#{$img};
+			background-image: -ms-#{$img};
+			background-image: -o-#{$img};
+			background-image: $img;
+		} @else {
+			$files: str-to-list($img);
+			
+	    	@each $file in $files {
+	    		$imgs: append($imgs, url("#{$img_path}#{$file}"), comma);
+	    	}
+	    }
+		background-image: $imgs;
+	}
+}
+
+// =============================================================================
+// Shorthand for offset positioning
+// @param {String} $position [null] - Either `relative`, `absolute` or `fixed`
+// @param {Length} $top [null] - Top offset
+// @param {Length} $right [null] - Right offset
+// @param {Length} $bottom [null] - Bottom offset
+// @param {Length} $left [null] - Left offset
+// @param {Length} $index [null] - z-index
+// =============================================================================
+@mixin position($position: null, $top: null, $right: null, $bottom: null, $left: null,$index: null) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+	z-index: $index;
+}
+
+// =============================================================================
+// Shorthand for padding
+// @param {String} $default - Either top right bottom left, top/bottom right/left
+// @param {Length} $top [null] - Top padding
+// @param {Length} $right [null] - Right padding
+// @param {Length} $bottom [null] - Bottom padding
+// @param {Length} $left [null] - Left padding
+// =============================================================================
+@mixin padding ($default: null,$top: null, $right: null, $bottom: null, $left: null) {
+	@if ($default) {
+		padding: $default;	
+	} @else if ($top and $right and $bottom and $left) {
+		padding: $top $right $bottom $left;		
+	} @else {
+		padding: {
+			top:$top;
+			right:$right;
+			bottom:$bottom;
+			left:$left;
+		}
+	}
+}
+
+// =============================================================================
+// Shorthand for margin
+// @param {String} $default - Either top right bottom left, top/bottom right/left
+// @param {Length} $top [null] - Top margin
+// @param {Length} $right [null] - Right margin
+// @param {Length} $bottom [null] - Bottom margin
+// @param {Length} $left [null] - Left margin
+// =============================================================================
+@mixin margin ($default: null,$top: null, $right: null, $bottom: null, $left: null) {
+	@if ($default) {
+		margin: $default;	
+	} @else if ($top and $right and $bottom and $left) {
+		margin: $top $right $bottom $left;		
+	} @else {
+		margin: {
+			top:$top;
+			right:$right;
+			bottom:$bottom;
+			left:$left;
+		}
+	}
+}
