@@ -1,5 +1,5 @@
 // =============================================================================
-// Handle landscape orientation
+// Apply style for landscape orientation
 // =============================================================================
 @mixin landscape {
 	@media screen and (orientation:landscape) {
@@ -8,7 +8,7 @@
 }
 
 // =============================================================================
-// Handle portrait orientation
+// Apply style for portrait orientation
 // =============================================================================
 @mixin portrait {
 	@media screen and (orientation:portrait) {
@@ -17,7 +17,7 @@
 }
 
 // =============================================================================
-// Primary input mechanism system can hover over elements with ease, which mainly desktop
+// Apply style for device support hover state using mouse input
 // =============================================================================
 @mixin desktop-hover {
     @media (hover: hover) {
@@ -28,9 +28,9 @@
 }
 
 // =============================================================================
-// Responsive breakpoint manager
+// Apply style base on breakpoint manager
 // @access public
-// @param {String} $breakpoint - Breakpoint
+// @param {String} $breakpoint
 // @param {String} $include_print
 // @requires $breakpoints
 // =============================================================================
@@ -58,7 +58,7 @@
 
 
 // =============================================================================
-// smartphones, touchscreens
+// Apply style only for device with touch support
 // =============================================================================
 @mixin touchscreen-device {
 	@media (hover: none) and (pointer: coarse) {
