@@ -3,4 +3,7 @@
 @import '../_abstracts/_mixins-shorthand';
 @import '../_abstracts/_mixins-common';
 @import '../_abstracts/_mixins-responsive';
-
+@import '../_abstracts/_placeholder';
+@import '../_base/_reset'; 
+@import '../_base/_common';
+@import '../_components/_nav.scss';
