@@ -1,0 +1,59 @@
+// =============================================================================
+// Return color base on the key
+// @required $primary-colours
+// =============================================================================
+@function getPrimaryColor ($value) {
+    @return map-get($primary-colours,$value);
+}
+
+// =============================================================================
+// Convert points to pixel
+// =============================================================================
+@function pt-to-px ($points) {
+	@return #{floor($points*.625+$points)}px; 
+}
+
+// =============================================================================
+// String Replace
+// =============================================================================
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Convert str to list
+// =============================================================================
+@function str-to-list($string, $separator: ' ', $startAt: 1) {
+    $workStr: str-slice($string,$startAt);
+    $list: ();
+    $indexOfFirstSpace: str-index($workStr,$separator);
+    @if $indexOfFirstSpace == null {
+        $list: ($workStr);
+    } @else {
+        $list: (str-slice($workStr, 1, $indexOfFirstSpace - 1));
+        $list: join($list,str-to-list($workStr, $startAt: $indexOfFirstSpace + 1));
+    }
+    @return $list;
+}
+
+// =============================================================================
+// Calculate the percentage base on the width
+// @required $default_width
+// =============================================================================
+@function calWidthPct ($width) {
+    @return percentage($width/$default_width);
+}
+
+// =============================================================================
+// Calculate the percentage base on the height
+// @required $default_height
+// =============================================================================
+@function calHeightPct ($height) {
+    @return percentage($height/$default_height);
+}
