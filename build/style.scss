@@ -1,9 +1,9 @@
-@import '../_abstracts/_variables';
-@import '../_abstracts/_functions';
-@import '../_abstracts/_mixins-shorthand';
-@import '../_abstracts/_mixins-common';
-@import '../_abstracts/_mixins-responsive';
-@import '../_abstracts/_placeholder';
+@import '../_abstract/_variables';
+@import '../_abstract/_functions';
+@import '../_abstract/_mixins-shorthand';
+@import '../_abstract/_mixins-common';
+@import '../_abstract/_mixins-responsive';
+@import '../_abstract/_placeholder';
 @import '../_base/_reset'; 
 @import '../_base/_common';
 @import '../_components/_nav.scss';
