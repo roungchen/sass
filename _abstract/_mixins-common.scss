@@ -5,6 +5,7 @@
 // @param {String} $weight 
 // @param {String} $style 
 // @param {String} $exts
+// @requires $font_path
 // =============================================================================
 @mixin font-face($name, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 	$src: null;
@@ -24,22 +25,22 @@
 		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
 		@if $ext == 'eot' {
 			$eot_src: append($eot_src, url(quote($font_path + $name + "." + $extmod)) format(quote($format)), comma);
-			$src: append($src, url(quote($font_path + $name + "." + $extmod)) format('embedded-opentype'), comma);
+			$src: append($src, url(quote($font_path + $name + "." + $extmod + "?#iefix")) format('embedded-opentype'), comma);
 		} @else {
 			$src: append($src, url(quote($font_path + $name + "." + $extmod)) format(quote($format)), comma);
 		}
 		
 	}
 	@font-face {
-		font:{
-			family: quote($name);
-			style: $style;
-			weight: $weight;
-		}
+		font-family: quote($name);
 		@if $eot_src {
 			src: $eot_src;
 		}
 		src: $src;
+		font:{
+			style: $style;
+			weight: $weight;
+		}
 	}
 }
 
@@ -56,4 +57,3 @@
 
   #{$property}: $value;
 }
-
