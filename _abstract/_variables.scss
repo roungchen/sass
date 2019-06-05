@@ -2,7 +2,7 @@ $path: '../';
 $img_path: '#{$path}images/';
 $font_path: '#{$path}fonts/';
 
-$font-ext: ('woff2','woff','ttf','eot');
+$font-ext: eot woff2 woff ttf;
 $font-name: ('');
 
 // Colors
