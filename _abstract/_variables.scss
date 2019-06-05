@@ -2,6 +2,9 @@ $path: '../';
 $img_path: '#{$path}images/';
 $font_path: '#{$path}fonts/';
 
+$font-ext: ('woff2','woff','ttf','eot');
+$font-name: ('');
+
 // Colors
 $primary-colours: (
   'blue': (#143a61)
