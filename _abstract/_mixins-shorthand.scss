@@ -143,3 +143,14 @@
 		}
 	}
 }
+
+// =============================================================================
+// Shorthand for building the font family
+// @requires $font-ext
+// @requires $font-name
+// =============================================================================
+@mixin font-build () {
+	@each $font in $fonts {
+		@include font-face($font,normal,normal,$font-ext);
+	}
+}
