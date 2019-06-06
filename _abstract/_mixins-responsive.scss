@@ -65,3 +65,18 @@
 		@content;
 	}	
 }
+
+// =============================================================================
+// Apply link color style with hover color
+// @access public
+// @param {String} $color_off
+// @param {String} $color_on
+// @param {List} $browser-prefixes
+// =============================================================================
+@mixin link-hover ($color_off,$color_on,$browser-prefixes) {
+	@include prefix(transition, color 0.5s ease, $browser-prefixes);
+	@include desktop-hover {
+		color:$color_on;
+	}
+	color:$color_off;
+}
