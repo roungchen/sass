@@ -5,6 +5,8 @@ $font_path: '#{$path}fonts/';
 $font-ext: eot woff2 woff ttf;
 $font-name: ('');
 
+$browser-prefixes: webkit ms moz o;
+
 // Colors
 $primary-colours: (
   'blue': (#143a61)
