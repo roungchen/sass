@@ -44,16 +44,26 @@
 	}
 }
 
-/// Mixin helper to output vendor prefixes
-/// @access public
-/// @author HugoGiraudel
-/// @param {String} $property - Unprefixed CSS property
-/// @param {*} $value - Raw CSS value
-/// @param {List} $prefixes - List of prefixes to output
+// =============================================================================
+// Mixin helper to output vendor prefixes
+// @access public
+// @author HugoGiraudel
+// @param {String} $property - Unprefixed CSS property
+// @param {*} $value - Raw CSS value
+// @param {List} $prefixes - List of prefixes to output without dash
+// Possible values:
+// 		Android: -webkit-
+// 		Chrome: -webkit-
+// 		iOS: -webkit-
+// 		Safari: -webkit-
+// 		Firefox: -moz-
+// 		Internet Explorer: -ms-
+// 		Opera: -o-
+// =============================================================================
 @mixin prefix($property, $value, $prefixes: ()) {
-  @each $prefix in $prefixes {
-    -#{$prefix}-#{$property}: $value;
-  }
+	@each $prefix in $prefixes {
+    	-#{$prefix}-#{$property}: $value;
+	}
 
-  #{$property}: $value;
+	#{$property}: $value;
 }
