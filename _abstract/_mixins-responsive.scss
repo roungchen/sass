@@ -77,6 +77,7 @@
 	@include prefix(transition, color 0.5s ease, $browser-prefixes);
 	@include desktop-hover {
 		color:$color_on;
+		text-decoration:none;
 	}
 	color:$color_off;
 }
