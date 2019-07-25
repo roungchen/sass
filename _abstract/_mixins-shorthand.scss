@@ -15,7 +15,7 @@
 	font:{
 		family: $family;
 		@if $size {
-			@if unitless($size) {
+			@if type-of($size) == number and unitless($size) {
 				size: pt-to-px($size);
 			} @else {
 				size: $size;
@@ -26,7 +26,7 @@
 	}
 	letter-spacing: $spacing;
 	@if $leading {
-		@if unitless($leading) {
+		@if type-of($leading) == number and unitless($leading) {
 			line-height: pt-to-px($leading);
 		} @else {
 			line-height:$leading;
