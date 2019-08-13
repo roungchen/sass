@@ -110,7 +110,11 @@
 	@if ($default) {
 		padding: $default;	
 	} @else if ($top and $right and $bottom and $left) {
-		padding: $top $right $bottom $left;		
+		@if ($right == $left) {
+			padding: $top $right $bottom;
+		} @else {
+			padding: $top $right $bottom $left;
+		}			
 	} @else {
 		padding: {
 			top:$top;
@@ -133,7 +137,11 @@
 	@if ($default) {
 		margin: $default;	
 	} @else if ($top and $right and $bottom and $left) {
-		margin: $top $right $bottom $left;		
+		@if ($right == $left) {
+			margin: $top $right $bottom;
+		} @else {
+			margin: $top $right $bottom $left;
+		}		
 	} @else {
 		margin: {
 			top:$top;
