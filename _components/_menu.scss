@@ -1,0 +1,90 @@
+$default-menu-color-bg:yellow !default;
+$default-menu-color-bg-hover: grey !default;
+$default-menu-font: Interstate-Light !default;
+$default-menu-font-color:white !default;
+$default-menu-font-color-hover: black!default;
+
+.page-menu {
+     @include font($default-menu-font,$color:$default-menu-font-color);
+     > {
+          div {
+               &:first-of-type {
+                    h3 {
+
+                         background-color:darken($default-menu-color-bg, 15% );
+                    }
+                    a {
+                         color:white;
+                         background-color:lighten($default-menu-color-bg, 15% );
+                         &.main-nav {
+                              background-color:lighten($default-menu-color-bg, 5% );
+                         }
+                         @media (hover: hover) {
+                              &:hover {
+                                   background-color:lighten($default-menu-color-bg, 30% );
+                              }
+                         }
+                    }
+               }
+               &:last-of-type {
+                    background-color:$default-menu-color-bg;
+               }
+          }
+     }
+}
+
+.page-menu-nav {
+     top:0px;
+     right:0;
+     @include font($default-menu-font,8pt,$align:center);
+     span {
+          padding:0;
+          width:50px;
+          height:50px;
+          box-sizing: border-box;
+          i {
+               font-size:20px;
+          }
+          background-color:$default-menu-color-bg;
+          &.prev {
+               margin-top:0;
+               padding-top:13px;
+               border-top:0;
+               border-right:0;
+          }
+          &.next {
+               padding-top:14px;
+               border-right:0;
+          }
+          &.go-top {
+               padding-top:14px;
+          }
+          &.tool-bars {
+               padding-top:15px;
+          }
+          &.menu-bars {
+               padding-top:15px;
+          }
+          @media (hover: hover) {
+               &:hover {
+                    background-color:$default-menu-color-bg-hover;
+               }
+          }
+     }
+}
+
+.page-back-to-top {
+     @include font ($default-menu-font,10px,$color:$default-menu-font-color,$align:center);
+     @media (hover: hover) {
+          &:hover {
+               color:$default-menu-font-color-hover;
+          }
+     }
+     &.spread {
+          @media (hover: hover) {
+               &:hover {
+                    color:$default-menu-color-bg;
+               }
+          }
+     }
+}

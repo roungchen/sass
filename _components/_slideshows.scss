@@ -1,0 +1,56 @@
+.slideshows {	
+	background-color:white;
+	width:100%;
+	padding-bottom:5%;
+	@include position(relative,$index:10);
+	> ul {	
+		position:relative;
+		width: inherit;
+		
+		overflow:hidden;
+		li {
+			@include position (absolute,$top:0,$left:0);
+			width:inherit;
+			display:none;
+			text-align:center;
+			img {
+				width:100%;
+				vertical-align: top;
+			}
+			&:first-of-type {
+				display:block;
+				z-index:10;
+			}
+		}
+	}
+	i {
+		@include font ($size:.6em,$color:white);
+		padding:10px 10px;
+		@include respond-to('sm') {
+			font-size:.9em;
+		}
+	}
+
+	.btn-left {
+		@include position(absolute,$top:50%,$left:3%,$index:15);
+		@include prefix(transform, translateY(-50%), $browser-prefixes);
+		width:20px;
+		height:auto;
+		cursor:pointer;
+	}
+
+	.btn-right {
+		@include position(absolute,$top:50%,$right:3%,$index:15);
+		@include prefix(transform, translateY(-50%), $browser-prefixes);
+		width:20px;
+		height:auto;
+		cursor:pointer;
+	}
+
+	@include respond-to('lg') {
+		.btn-right,
+		.btn-left {
+			width:30px;
+		}
+	}
+}

@@ -24,5 +24,36 @@ $breakpoints: (
 	'lg': (min-width: 992px),
 	'xl': (min-width: 1200px),
 	'xxl': (min-width: 1440px),
-	'xxxl': (min-width: 1600px)
+	'xxxl': (min-width: 1600px),
+	'spread': (min-width:1935px)
 );
+
+$default_width:960;
+$default_height:1242;
+
+$default_margin:27px;
+$default_min_margin:10px;
+
+// Hamburger Setting
+$hamburger-layer-width 	: 30px;
+$hamburger-padding-x   	: 0px;
+$hamburger-padding-y    : 14px;
+$hamburger-layer-color 	: #COLOR NAME#;
+$hamburger-layer-spacing : 4px;
+$hamburger-layer-height  : 3px;
+
+// Menu Theme
+$default-menu-color-bg:map-get($primary-colours,'#COLOR NAME#');
+$default-menu-color-bg-hover: map-get($primary-colours,'#COLOR NAME#');
+$default-menu-font: #FONT NAME#;
+$default-menu-font-color:#COLOR NAME#;
+$default-menu-font-color-hover: #COLOR NAME#;
+
+
+// Report Tools Theme
+$report_tool_font: #FONT NAME#;
+$report_tool_font_size: 12pt;
+$report_tool_font_spacing: .1px;
+$report_tool_bg: map-get($primary-colours,'#COLOR NAME#');
+$report_tool_color_save: #COLOR NAME#;
+$report_tool_bg_hover: map-get($primary-colours,'#COLOR NAME#');

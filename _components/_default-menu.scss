@@ -1,0 +1,178 @@
+.page-menu {
+     @include position(fixed,$top:0,$left:-191px,$index:100);
+     width:240px;
+     > {
+          div {
+               &:first-of-type {
+                    float:left;
+                    width:190px;
+                    h3 {
+                         line-height:50px;
+                         padding-left:10px;
+                         font-size:1em;
+                         height:50px;
+                         text-transform: uppercase;
+                         cursor:pointer;
+                         border-bottom:1px solid white;
+
+                         white-space: nowrap;
+                    }
+                    a {
+                         font-size:0.8em;
+                         display:block;
+                         padding:12px;
+                         color:black;
+                         text-decoration: none;
+                         &.sub-nav {
+                              padding-left:40px;
+                         }
+                         &:not(:last-of-type) {
+                              border-bottom:1px solid white;
+                         }
+                         @media screen and (max-width:1024px) {
+                              padding:10px;
+                              font-size:12px;
+                              &.sub-nav {
+                                   padding-left:30px;
+                              }
+                         }
+                    }
+               }
+               &:last-of-type {
+                    cursor:pointer;
+                    color:white;
+                    padding-top:2px;
+                    text-align:center;
+                    font-size:11px;
+                    float:left;
+                    width:50px;
+                    height:50px;
+                    border:1px solid white;
+                    border-top:0;
+                    overflow:hidden;
+                    i {
+                         font-size:30px;
+                    }
+                    span {
+                         display:block;
+                    }
+               }
+          }
+     }
+     &.compact-mode {
+          left: 0!important;
+          top: auto;
+          bottom: 40px;
+          > {
+               div {
+                    width:100%;
+                    &:first-of-type {
+                         h3 {
+                              border-right:0;
+                         }
+                    }
+                    &.page-menu-btn {
+                         display:none;
+                    }
+               }
+              
+          }
+          
+     }
+}
+
+.page-menu-nav {
+     @include position(fixed, $right:10px, $index:998);
+     span {
+          color:white;
+          display:block;
+          margin-top:10px;
+          height:auto;
+          color:white;
+          width:auto;
+          padding:14px 10px;
+          cursor: pointer;
+          @media (hover: hover) {
+               &:hover {
+                    @include transition ('all 0.3s ease');
+               }
+          }
+          border:1px solid white;
+     }
+     .menu-bars {
+          display:none;
+     }
+     .tool-bars {
+          display:none;
+     }
+     .prev {
+
+     }
+     .next {
+
+     }
+     .go-top {
+          display:none;
+     }
+     .inactive {
+          opacity:0.5
+     }
+     
+     &.compact-mode {
+          right:0;
+          width:100%;
+          top:auto;
+          bottom:0;
+          background-color:white;
+          span {
+               display:block!important;
+               margin-top:0;
+               border-bottom:0px!important;
+               border-top:2px solid white!important;
+               width:20%;
+               float:left;
+               padding:10px 10px;
+               font-size:20px;
+               &:first-of-type {
+                    border-left:0px!important;
+               }
+               &:last-of-type {
+                    border-right:0px!important;
+               }
+          }
+
+     }
+}
+
+.page-back-to-top {
+     @include position(fixed, $right:6px, $bottom:20px, $index:10000);
+     width:40px;
+     overflow:hidden;
+     line-height:1.2em;
+     text-align:center;
+     text-transform: uppercase;
+     cursor:pointer;
+     display:none;
+     i {
+          @include font ($size:25pt);
+          display:block;
+     }
+     &.spread {
+          color:white;
+     }
+     &.compact-mode {
+          display:none!important;
+     }
+}
+
+
+.menu-scroll {
+     height: calc(100% - 150px);
+     > {
+          div:first-of-type {
+               overflow-y: scroll!important;
+               height: 100%;
+          }
+     }
+}
+
