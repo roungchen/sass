@@ -3,16 +3,16 @@ $img_path: '#{$path}images/';
 $font_path: '#{$path}fonts/';
 
 // List of font extension to be use
-$font-ext: eot woff2 woff ttf;
+$font-ext: eot woff ttf;
 
 // List of font to be use
-$fonts: ('');
+$fonts: ('#FONT NAME#');
 
 $browser-prefixes: webkit ms moz o;
 
 // Colors
 $primary-colours: (
-  'blue': (#143a61)
+  '#COLOR NAME#': (#COLOR HEX#)
 );
 
 // Break Points
