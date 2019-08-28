@@ -1,0 +1,149 @@
+$report_tool_font: DIN-Regular !default;
+$report_tool_font_size: 12pt !default;
+$report_tool_font_spacing: .1px !default;
+$report_tool_bg: yellow !default;
+$report_tool_color_save: green !default;
+$report_tool_bg_hover: #808285 !default;
+
+#customizedReport {
+     @include font ($report_tool_font,$report_tool_font_size);
+}
+
+.disabled {
+     opacity:.3
+}
+
+.report-tools-wrap {
+     @include position(fixed, $top:8%,$left:-200px,$index:998);
+     @include font ($size:9pt,$align:left,$transform:uppercase);
+     width:250px;
+     background-color:$report_tool_bg;
+     span {
+          display:block;
+          width:auto;
+          font-size:16px;
+          float:left;
+          padding-left:10px;
+          line-height: 1em;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 200px;
+     }
+     i {
+          @include font ($size:24px,$color:white,$leading:50px,$align: center);
+          float:right;
+          display:block;
+          width:50px;
+          border-left:1px solid white;
+     }
+     a {
+          @include font ($report_tool_font,$color:white,$decoration:none);
+          display:block;
+          clear:both;
+          cursor:pointer;
+          border:1px solid white;
+          border-bottom:0;
+          border-left:0;
+          overflow:hidden;
+          position:relative;
+          &:last-of-type {
+               border-bottom:1px solid white;
+          }
+          @media (hover: hover) {
+               &:hover {               
+                    background-color: $report_tool_bg_hover;
+               }
+          }
+          &.btnSavePage {
+               border-bottom:0;
+          }
+          br {
+               display:none;
+          }
+          span {
+               font-size:9pt;
+          }
+     }
+     &.compact-mode {
+          left: calc(20% - 1px);
+          top: auto;
+          bottom: 40px;
+          border:1px solid white;
+          span {
+               padding-left:50px;
+               padding-right:10px;
+          }
+          i {
+               float:left;
+          }
+     }
+}
+
+/* Save button */
+#report-tools-outside {
+     a.report-tools {
+          &.save-icon-accepted {
+               i {
+                    &.fa {
+                         color: #{$report_tool_color_save}!important;
+                    }
+               }
+          }
+          &.save-icon-error {
+               i {
+                    &.fa {
+                         color:red!important;
+                    }
+               }
+          }
+     }
+}
+
+/* Customize Report Window */
+.modal-content {
+     @include font($report_tool_font);
+     .modal-header {
+          background-color:$report_tool_bg;
+     }
+     .modal-footer {
+          text-align:center;
+          .btn-primary {
+               background-color:$report_tool_bg;
+               border-color:darken($report_tool_bg,5%);
+               @media (hover: hover) {
+                    &:hover {
+                         background-color:lighten($report_tool_bg,20%);
+                         border-color:lighten($report_tool_bg,10%);
+                    }
+               }
+          }
+          .btn {
+               font-size:10px;
+               padding:6px 6px;
+          }
+          .btn+.btn {
+               margin-left:0;
+          }
+          .btn-default {
+               margin-top:10px;
+          }
+          @include respond-to('sm') {
+               .btn {
+                    font-size:14px;
+                    padding:6px 12px;
+               }
+               .btn+.btn {
+                    margin-left:5px;
+               }
+               .btn-default {
+                    margin-top:0px;
+               }
+          }
+     }
+     .modal-body {
+         height: 60vh;
+         overflow: hidden;
+         overflow-y: scroll;
+     }
+}
