@@ -1,0 +1,76 @@
+
+* {
+	box-sizing : border-box;
+}
+
+a[href]:after{content:none}
+
+thead {
+	display: table-row-group;
+}
+
+.fp-tableCell {
+	display:inline-block!important;
+}
+
+html, body {
+	margin:0;
+	padding:0;
+	-webkit-print-color-adjust: exact;
+	color-adjust: exact;
+	background-color:white!important;
+	height:auto;
+	-webkit-font-smoothing: antialiased;
+}
+
+#fullpage {
+	width:100%!important;
+	&:after{
+		margin-bottom:0!important;
+	}
+}
+
+@page {
+	margin: 0;
+	padding:0;
+	size:letter portrait;	
+	max-height:none;
+	max-width:none
+}
+
+.section {
+	padding:0!important;
+	margin:0!important;
+	border:0!important;
+	min-height:none;
+	overflow:visible;
+	float:none!important;
+	page-break-before:always;
+	@include prefix(transform, 'scale(1)!important', $browser-prefixes);
+}
+
+.printable-area{
+	@include prefix(transform, 'scale(1)', $browser-prefixes);
+	@include prefix (box-shadow, 'none', $browser-prefixes);
+	margin-top:0!important;
+	margin-bottom:0!important;
+	background-color:white;
+	border:0;
+	overflow:hidden;
+}
+
+// Overwrite Bootstrap setting
+img {
+	max-width:unset !important;
+	page-break-inside:auto!important;
+}
+
+.report-tools-wrap,
+.page-menu,
+.page-menu-nav,
+.report-tools-wrap,
+.socialmedia-nav,
+.page-back-to-top {
+	display:none!important;
+}
+
