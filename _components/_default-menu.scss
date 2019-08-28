@@ -169,8 +169,8 @@
 .menu-scroll {
      height: calc(100% - 150px);
      > {
-          div {
-               overflow-y: scroll;
+          div:first-of-type {
+               overflow-y: scroll!important;
                height: 100%;
           }
      }
